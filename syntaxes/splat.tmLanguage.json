@@ -18,6 +18,9 @@
             "include": "#comments"
         },
 		{
+			"include": "#functions"
+		},
+		{
 			"include": "#tasks"
 		},
 		{
@@ -48,7 +51,7 @@
 		"directives": {
 			"patterns": [{
 				"name": "keyword.directive.splat",
-				"match": "\\b(defADDR|defBLOCK|defBYTE|defFLOAT|defLONG|defSEM|defTIME24|defWORD|EQU|fEQU|iEQU|NV0Byte|NV0fNum|NV0Ptr|NV0Space|NVEM0|mEQU|oEQU|sEQU|#EQU|#IF|#ELSEIF|#ELSE|#ENDIF|#)\\b"
+				"match": "\\b(SetMem|defADDR|defBLOCK|defBYTE|defFLOAT|defLONG|defSEM|defTIME24|defWORD|EQU|fEQU|iEQU|NV0Byte|NV0fNum|NV0Ptr|NV0Space|NVEM0|mEQU|oEQU|sEQU|#EQU|#IF|#ELSEIF|#ELSE|#ENDIF|#)\\b"
 			}]
 		},
 		"precodes":{
@@ -78,6 +81,10 @@
             "name": "comment.line.splat",
             "match": ";.*"
         },
+		"functions": {
+			"name": "entity.name.function.splat",
+			"match": "\\b\\w+:"
+		},
 		"tasks": {
 			"name": "support.function.task.splat",
 			"match": "\\b(BranchJ|ClrInstCount|fSTTimeSince|GetTick100|KillTask|LaunchTask|LaunchTaskJ|LaunchTaskX|LoopIfTiming|MarkTime|RunTasks|RunTasksForever|STScale|STStart|STTest|WaitForRTCEvent|WaitForSF|WaitForST|YieldTask)\\b"
