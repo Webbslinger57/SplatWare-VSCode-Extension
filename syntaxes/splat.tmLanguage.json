@@ -6,14 +6,61 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#directives"
+		},
+		{
+			"include": "#precodes"
+		},
+		{
 			"include": "#strings"
+		},
+        {
+            "include": "#comments"
+        },
+		{
+			"include": "#tasks"
+		},
+		{
+			"include": "#semaphores"
+		},
+		{
+			"include": "#_functions"
+		},
+		{
+			"include": "#f_functions"
+		},
+		{
+			"name": "constant.numeric.splat",
+			"match": "\\b(0x[0-9a-fA-F]+|\\d+)\\b"
+		},
+		{
+			"name": "constant.character.splat",
+			"match": "\\b(\\w+)\\b"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.splat",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(Return|fGoIfNeg|fGoIfNZ|fGoIfPos|fGoIfWGEQ|fGoIfWGTQ|fGoIfWLEQ|fGoIfWLTQ|fGoIfZ|GoIfF|GoIfInK|GoIfInOff|GoIfInOn|GoIfINZ|GoIfIZ|GoIfMEQ|GoIfMGE|GoIfMGT|GoIfMLE|GoIfMLT|GoIfMNE|GoIfMNZ|GoIfMZ|GoIfNZ|GoIfRTCEvent|GoIfSF|GoIfSim|GoIfST|GoIfT|GoIfUF|GoIfUT|GoIfXEQ|GoIfXGE|GoIfXGT|GoIfXLE|GoIfXLT|GoIfXNE|GoIfZ|GoSub|GoSubIfF|GoSubIfMNZ|GoSubIfMZ|GoSubIfNZ|GoSubIfSF|GoSubIfST|GoSubIfT|GoSubIfXEQ|GoSubIfXGE|GoSubIfXGT|GoSubIfXLE|GoSubIfXLT|GoSubIfXNE|GoSubIfZ|GoTo)\\b"
+			}]
+		},
+		"directives": {
+			"patterns": [{
+				"name": "keyword.directive.splat",
+				"match": "\\b(defADDR|defBLOCK|defBYTE|defFLOAT|defLONG|defSEM|defTIME24|defWORD|EQU|fEQU|iEQU|NV0Byte|NV0fNum|NV0Ptr|NV0Space|NVEM0|mEQU|oEQU|sEQU|#EQU|#IF|#ELSEIF|#ELSE|#ENDIF|#)\\b"
+			}]
+		},
+		"precodes":{
+			"patterns": [{
+				"name": "keyword.precodes.splat",
+				"match": "\\b(IasJ|NoJ)\\b"
+			}]
+		},
+		"semaphores":{
+			"patterns": [{
+				"name": "keyword.precodes.splat",
+				"match": "\\b(ClrS|SetS)\\b"
 			}]
 		},
 		"strings": {
@@ -26,6 +73,22 @@
 					"match": "\\\\."
 				}
 			]
+		},
+        "comments": {
+            "name": "comment.line.splat",
+            "match": ";.*"
+        },
+		"tasks": {
+			"name": "support.function.task.splat",
+			"match": "\\b(BranchJ|ClrInstCount|fSTTimeSince|GetTick100|KillTask|LaunchTask|LaunchTaskJ|LaunchTaskX|LoopIfTiming|MarkTime|RunTasks|RunTasksForever|STScale|STStart|STTest|WaitForRTCEvent|WaitForSF|WaitForST|YieldTask)\\b"
+		},
+		"_functions": {
+			"name": "entity.name.function.splat",
+			"match": "\\b(_\\w+)\\b"
+		},
+		"f_functions": {
+			"name": "support.function.f.splat",
+			"match": "\\b(aComRx_fGetNum|ComRx_fGetNum|fAbs|fAdd|fAnIn|fAnOut|fCompareR|fDec|fDiv|fGetTimer|fGoIfNeg|fGoIfNZ|fGoIfPos|fGoIfWGEQ|fGoIfWGTQ|fGoIfWLEQ|fGoIfWLTQ|fGoIfZ|fIEEEtoW|fIEEEtoWR|fInc|fix|FixToMem16S|FixToMem16U|fLoadQ|fLoadW|float|FloatMem16S|FloatMem16U|fMul|fNeg|fPulse0|fRecallQ|fRecallW|fSetTimer|fSign|fStore|fSTSinceMark|fSTTimeSince|fSub|fSwap|fTest|fTestWeqQ|fTestWeqZ|fTestWgeQ|fTestWgeZ|fTestWgtQ|fTestWleQ|fTestWltQ|fTestWltZ|fTestWneQ|fTestWneZ|fWtoQ|fWtoIEEE|fWtoIEEER|iifGetNum|iifPrintWFW|iifPrintWVW|NVfGetEndW|NVfGetPtrW|NVfGetRecNumW|NVfPutPtrW|NVfPutRecNumW|NVfReadQ|NVfReadW|NVfWriteW|OBCA_fRead|OBLCD_fDispW|OBCA_fRdClr|OBCA_fRead)\\b"
 		}
 	},
 	"scopeName": "source.splat"
