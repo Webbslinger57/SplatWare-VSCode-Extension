@@ -13,7 +13,7 @@
     "languages": [{
       "id": "splat",
       "aliases": ["Splat", "splat"],
-      "extensions": [".spt",".b1d"],
+      "extensions": [".spt",".b1d", ".abk"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{

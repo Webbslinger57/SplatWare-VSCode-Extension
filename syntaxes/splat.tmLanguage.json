@@ -3,6 +3,9 @@
 	"name": "Splat",
 	"patterns": [
 		{
+			"include": "#operators"
+		},
+		{
 			"include": "#keywords"
 		},
 		{
@@ -17,6 +20,12 @@
         {
             "include": "#comments"
         },
+		{
+			"include": "#types"
+		},
+		{
+				"include": "#punctuation"
+		},
 		{
 			"include": "#functions"
 		},
@@ -51,7 +60,7 @@
 		"directives": {
 			"patterns": [{
 				"name": "keyword.directive.splat",
-				"match": "\\b(SetMem|defADDR|defBLOCK|defBYTE|defFLOAT|defLONG|defSEM|defTIME24|defWORD|EQU|fEQU|iEQU|NV0Byte|NV0fNum|NV0Ptr|NV0Space|NVEM0|mEQU|oEQU|sEQU|#EQU|#IF|#ELSEIF|#ELSE|#ENDIF|#)\\b"
+				"match": "\\b(SetMem|defADDR|defBLOCK|defBYTE|defFLOAT|defLONG|defSEM|defTIME24|defWORD|EQU|fEQU|iEQU|mEQU|oEQU|sEQU|#EQU|#IF|#ELSEIF|#ELSE|#ENDIF|#)\\b"
 			}]
 		},
 		"precodes":{
@@ -81,6 +90,10 @@
             "name": "comment.line.splat",
             "match": ";.*"
         },
+		"types": {
+			"name": "entity.name.type.splat",
+			"match": "\\b(NV\\w*)\\b"
+		},
 		"functions": {
 			"name": "entity.name.function.splat",
 			"match": "\\b\\w+:"
@@ -95,7 +108,15 @@
 		},
 		"f_functions": {
 			"name": "support.function.f.splat",
-			"match": "\\b(aComRx_fGetNum|ComRx_fGetNum|fAbs|fAdd|fAnIn|fAnOut|fCompareR|fDec|fDiv|fGetTimer|fGoIfNeg|fGoIfNZ|fGoIfPos|fGoIfWGEQ|fGoIfWGTQ|fGoIfWLEQ|fGoIfWLTQ|fGoIfZ|fIEEEtoW|fIEEEtoWR|fInc|fix|FixToMem16S|FixToMem16U|fLoadQ|fLoadW|float|FloatMem16S|FloatMem16U|fMul|fNeg|fPulse0|fRecallQ|fRecallW|fSetTimer|fSign|fStore|fSTSinceMark|fSTTimeSince|fSub|fSwap|fTest|fTestWeqQ|fTestWeqZ|fTestWgeQ|fTestWgeZ|fTestWgtQ|fTestWleQ|fTestWltQ|fTestWltZ|fTestWneQ|fTestWneZ|fWtoQ|fWtoIEEE|fWtoIEEER|iifGetNum|iifPrintWFW|iifPrintWVW|NVfGetEndW|NVfGetPtrW|NVfGetRecNumW|NVfPutPtrW|NVfPutRecNumW|NVfReadQ|NVfReadW|NVfWriteW|OBCA_fRead|OBLCD_fDispW|OBCA_fRdClr|OBCA_fRead)\\b"
+			"match": "\\b(aComRx_fGetNum|ComRx_fGetNum|fAbs|fAdd|fAnIn|fAnOut|fCompareR|fDec|fDiv|fGetTimer|fGoIfNeg|fGoIfPos|fGoIfWGEQ|fGoIfWGTQ|fGoIfWLEQ|fGoIfWLTQ|fGoIfZ|fIEEEtoW|fIEEEtoWR|fInc|fix|FixToMem16S|FixToMem16U|fLoadQ|fLoadW|float|FloatMem16S|FloatMem16U|fMul|fNeg|fPulse0|fRecallQ|fRecallW|fSetTimer|fSign|fStore|fSTSinceMark|fSTTimeSince|fSub|fSwap|fTest|fTestWeqQ|fTestWeqZ|fTestWgeQ|fTestWgeZ|fTestWgtQ|fTestWleQ|fTestWltQ|fTestWltZ|fTestWneQ|fTestWneZ|fWtoQ|fWtoIEEE|fWtoIEEER|iifGetNum|iifPrintWFW|iifPrintWVW|fGetEndW|OBCA_fRead|OBLCD_fDispW|OBCA_fRdClr|OBCA_fRead)\\b"
+		},
+		"operators": {
+			"name": "keyword.operator.splat",
+			"match": "\\b(ADD|Add|Recall|LoadX|AndM|Goto|SBC|SUB|ADC|TestXeqY|TestXgeY|TestXgtY|TestXleY|TestXltY|TestXneY)\\b"
+		},
+		"punctuation": {
+			"name": "punctuation.splat",
+			"match": "\\b(:|,|\\(|\\)|\\[|\\]|\\{|\\}|\\$|\\.|\\%)\\b"
 		}
 	},
 	"scopeName": "source.splat"
