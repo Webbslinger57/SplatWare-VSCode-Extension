@@ -9,6 +9,9 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#classes"
+		},
+		{
 			"include": "#directives"
 		},
 		{
@@ -117,6 +120,10 @@
 		"punctuation": {
 			"name": "punctuation.splat",
 			"match": "\\b(:|,|\\(|\\)|\\[|\\]|\\{|\\}|\\$|\\.|\\%)\\b"
+		},
+		"classes": {
+			"name": "entity.name.class.splat",
+			"match": "\\b((OBLCD|RTC)\\w*)\\b"
 		}
 	},
 	"scopeName": "source.splat"
