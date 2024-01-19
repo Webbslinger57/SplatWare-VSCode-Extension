@@ -5,6 +5,7 @@ This will be a fully built out language support extension one day...maybe, but f
 ## Features
 
 This Package adds syntax highlighting for many of the common Splat PC Instructions
+It also adds collapsable regions by using ";region" and ";endregion"
 
 ## Requirements
 
@@ -16,7 +17,7 @@ Many Instructions are not yet supported.
 
 ## Release Notes
 
-In this release, we added syntax highlighting for many instructions and directives
+In this release, we added collapsable regions
 
 ### 1.0.0
 
