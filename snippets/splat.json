@@ -68,6 +68,42 @@
             "     Target       ${5:case4}"
         ]
     },
+    "If Greater Template": {
+        "prefix": "if x > y",
+        "body": [
+            ";region If ${1:variable} > ${2:threshold}",
+            "   LoadX          ${1:variable}",
+            "   GoIfXGT        ${2:threshold}, ${3:label}",
+            ";endregion ${1:variable} > ${2:threshold}"
+        ]
+    },
+    "If Less Template": {
+        "prefix": "if x < y",
+        "body": [
+            ";region If ${1:variable} < ${2:threshold}",
+            "   LoadX          ${1:variable}",
+            "   GoIfXLT        ${2:threshold}, ${3:label}",
+            ";endregion ${1:variable} < ${2:threshold}"
+        ]
+    },
+    "If Greater or Equal Template": {
+        "prefix": "if x >= y",
+        "body": [
+            ";region If ${1:variable} >= ${2:threshold}",
+            "   LoadX          ${1:variable}",
+            "   GoIfXGE        ${2:threshold}, ${3:label}",
+            ";endregion ${1:variable} >= ${2:threshold}"
+        ]
+    },
+    "If Less or Equal Template": {
+        "prefix": "if x <= y",
+        "body": [
+            ";region If ${1:variable} <= ${2:threshold}",
+            "   LoadX          ${1:variable}",
+            "   GoIfXLE        ${2:threshold}, ${3:label}",
+            ";endregion ${1:variable} <= ${2:threshold}"
+        ]
+    },
     "For Loop Reverse Template": {
         "prefix": "for reverse",
         "body": [
@@ -94,10 +130,46 @@
             ";endregion ${1:loopName}"
         ]
     },
+    "Do While Loop Template":{
+        "prefix": "do while loop",
+        "body": [
+            ";region ${1:loopName}",
+            ";do while not ${2:sentinel}",
+            "_${1:loopName}",
+            "   YieldTask ;Required in while loops",
+            "   ${3:code}",
+            "   GoIfST         ${2:sentinel}, _${1:loopName}",
+            "   GoTo           ${4:exit}",
+            ";endregion ${1:loopName}"
+        ]
+    },
+    "While Loop Template": {
+        "prefix": "while loop",
+        "body": [
+            ";region ${1:loopName}",
+            ";while not ${2:sentinel}",
+            "_${1:loopName}_body",
+            "   YieldTask ;Required in while loops",
+            "   ${3:code}",
+            "_${1:loopName}",
+            "   GoIfST         ${2:sentinel}, _${1:loopName}_body",
+            "   GoTo           ${4:exit}",
+            ";endregion ${1:loopName}"            
+        ]
+    },
     "Comment HR": {
         "prefix": "comment hr",
         "body": [
             ";==============================================================================="
+        ]
+    },
+    "Comment Block": {
+        "prefix": "comment block",
+        "body": [
+            ";region=========================================================================",
+            "; ${1:Comment Line 1}",
+            "; ${2:Comment Line 2}",
+            ";endregion======================================================================"
         ]
     }
 }
