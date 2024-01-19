@@ -1,0 +1,19 @@
+{
+    "Subroutine Template": {
+        "prefix": "subroutine",
+        "body": [
+            ";region ${1:subroutineName}",
+            ";      =========================================================================",
+            ";DESCRIPTION:",
+            "; ${2:Description of the subroutine}",
+            ";PARAMETERS:",
+            ";  -> ${3:Input parameters}",
+            ";RETURNS:",
+            "; <-  ${4:Return values}",
+            ";===============================================================================",
+            "${1:subroutineName}",
+            ";endregion ${1:subroutineName}"
+        ],
+        "description": "Template for a subroutine"
+    }
+}

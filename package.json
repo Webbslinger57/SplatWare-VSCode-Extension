@@ -20,6 +20,10 @@
       "language": "splat",
       "scopeName": "source.splat",
       "path": "./syntaxes/splat.tmLanguage.json"
+    }],
+    "snippets": [{
+      "language": "splat",
+      "path": "./snippets/splat.json"
     }]
   }
 }

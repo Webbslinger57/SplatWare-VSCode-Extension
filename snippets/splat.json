@@ -1,0 +1,103 @@
+{
+    "Subroutine Template": {
+        "prefix": "subroutine",
+        "body": [
+            ";region ${1:subroutineName}",
+            ";===============================================================================",
+            ";DESCRIPTION:",
+            "; ${2:Description of the subroutine}",
+            ";PARAMETERS:",
+            ";  -> ${3:Input parameters}",
+            ";RETURNS:",
+            "; <-  ${4:Return values}",
+            ";===============================================================================",
+            "${1:subroutineName}",
+            "   ${5:code}",
+            "",
+            "   Return",
+            ";endregion ${1:subroutineName}"
+        ],
+        "description": "Template for a subroutine"
+    },
+    "Function Template": {
+        "prefix": "function",
+        "body": [
+            ";region ${1:functionName}",
+            ";===============================================================================",
+            ";DESCRIPTION:",
+            "; ${2:Description of the function}",
+            ";PARAMETERS:",
+            ";  -> ${3:Input parameters}",
+            ";RETURNS:",
+            "; <-  ${4:Return values}",
+            ";===============================================================================",
+            "${1:functionName}",
+            "   ${5:code}",
+            "",
+            "   GoTo          ${6:exit}",
+            ";endregion ${1:functionName}"
+        ]
+    },
+    "String Block Template": {
+        "prefix": "string-block",
+        "body": [
+            "${1:VariableName}",
+            "                  ;01234567890123456789",
+            "   NV0Byte        \"${2:Line1}\""
+        ],
+        "description": "Template for a string block"
+    },
+    "String Block with 2 lines": {
+        "prefix": "string-block-2",
+        "body": [
+            "${1:VariableName}",
+            "                  ;01234567890123456789",
+            "   NV0Byte        \"${2:Line1}\"",
+            "                  ;01234567890123456789",
+            "   NV0Byte        \"${3:Line2}\""
+        ],
+        "description": "Template for a string block with 2 lines"
+    },
+    "Switch Statement  Template": {
+        "prefix": "switch",
+        "body": [
+            "   BranchM        ${1:variable}",
+            "     Target       ${2:case1}",
+            "     Target       ${3:case2}",
+            "     Target       ${4:case3}",
+            "     Target       ${5:case4}"
+        ]
+    },
+    "For Loop Reverse Template": {
+        "prefix": "for reverse",
+        "body": [
+            ";region ${1:loopName}",
+            ";for i=${2:start} > 0",
+            "   LoadI          ${2:start}",
+            "_${1:loopName}",
+            "   ${4:code}",
+            "   DecI           ;Decrement i",
+            "   GoIfnz         _${1:loopName}",
+            ";endregion ${1:loopName}"
+        ]
+    },
+    "For Loop Template": {
+        "prefix": "for loop",
+        "body": [
+            ";region ${1:loopName}",
+            ";for x=0 < ${2:end}",
+            "   LoadX          0",
+            "_${1:loopName}",
+            "   ${4:code}",
+            "   IncX           ;Increment x",
+            "   GoIfXLT        ${2:end}, _${1:loopName}",
+            ";endregion ${1:loopName}"
+        ]
+    },
+    "Comment HR": {
+        "prefix": "comment hr",
+        "body": [
+            ";==============================================================================="
+        ]
+    }
+}
