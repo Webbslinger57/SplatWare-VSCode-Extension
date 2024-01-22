@@ -38,26 +38,6 @@
             ";endregion ${1:functionName}"
         ]
     },
-    "String Block Template": {
-        "prefix": "string-block",
-        "body": [
-            "${1:VariableName}",
-            "                  ;01234567890123456789",
-            "   NV0Byte        \"${2:Line1}\""
-        ],
-        "description": "Template for a string block"
-    },
-    "String Block with 2 lines": {
-        "prefix": "string-block-2",
-        "body": [
-            "${1:VariableName}",
-            "                  ;01234567890123456789",
-            "   NV0Byte        \"${2:Line1}\"",
-            "                  ;01234567890123456789",
-            "   NV0Byte        \"${3:Line2}\""
-        ],
-        "description": "Template for a string block with 2 lines"
-    },
     "Switch Statement  Template": {
         "prefix": "switch",
         "body": [
@@ -77,6 +57,16 @@
             ";endregion ${1:variable} > ${2:threshold}"
         ]
     },
+    "If Greater Template (float)": {
+        "prefix": "if x > y (float)",
+        "body": [
+            ";region If ${1:variable} > ${2:threshold} (float)",
+            "   fLoadW         ${1:variable}",
+            "   fLoadQ         ${2:threshold}",
+            "   fGoIfWGTQ      ${3:label}",
+            ";endregion ${1:variable} > ${2:threshold} (float)"
+        ]
+    },
     "If Less Template": {
         "prefix": "if x < y",
         "body": [
@@ -84,6 +74,16 @@
             "   LoadX          ${1:variable}",
             "   GoIfXLT        ${2:threshold}, ${3:label}",
             ";endregion ${1:variable} < ${2:threshold}"
+        ]
+    },
+    "If Less Template (float)": {
+        "prefix": "if x < y (float)",
+        "body": [
+            ";region If ${1:variable} < ${2:threshold} (float)",
+            "   fLoadW         ${1:variable}",
+            "   fLoadQ         ${2:threshold}",
+            "   fGoIfWLTQ      ${3:label}",
+            ";endregion ${1:variable} < ${2:threshold} (float)"
         ]
     },
     "If Greater or Equal Template": {
@@ -95,6 +95,16 @@
             ";endregion ${1:variable} >= ${2:threshold}"
         ]
     },
+    "If Greater or Equal Template (float)": {
+        "prefix": "if x >= y (float)",
+        "body": [
+            ";region If ${1:variable} >= ${2:threshold} (float)",
+            "   fLoadW         ${1:variable}",
+            "   fLoadQ         ${2:threshold}",
+            "   fGoIfWGEQ      ${3:label}",
+            ";endregion ${1:variable} >= ${2:threshold} (float)"
+        ]
+    },
     "If Less or Equal Template": {
         "prefix": "if x <= y",
         "body": [
@@ -102,6 +112,16 @@
             "   LoadX          ${1:variable}",
             "   GoIfXLE        ${2:threshold}, ${3:label}",
             ";endregion ${1:variable} <= ${2:threshold}"
+        ]
+    },
+    "If Less or Equal Template (float)": {
+        "prefix": "if x <= y (float)",
+        "body": [
+            ";region If ${1:variable} <= ${2:threshold} (float)",
+            "   fLoadW         ${1:variable}",
+            "   fLoadQ         ${2:threshold}",
+            "   fGoIfWLEQ      ${3:label}",
+            ";endregion ${1:variable} <= ${2:threshold} (float)"
         ]
     },
     "For Loop Reverse Template": {
@@ -171,6 +191,42 @@
             "; ${2:Comment Line 1}",
             "; ${3:Comment Line 2}",
             ";endregion======================================================================"
+        ]
+    },
+    "OBLCD String Block Template": {
+        "prefix": "oblcd-string-block",
+        "body": [
+            "${1:VariableName}",
+            "                  ;01234567890123456789",
+            "   NV0Byte        \"${2:Line1}\""
+        ],
+        "description": "Template for a string block"
+    },
+    "OBLCD String Block with 2 lines": {
+        "prefix": "oblcd-string-block-2",
+        "body": [
+            "${1:VariableName}",
+            "                  ;01234567890123456789",
+            "   NV0Byte        \"${2:Line1}\"",
+            "                  ;01234567890123456789",
+            "   NV0Byte        \"${3:Line2}\""
+        ],
+        "description": "Template for a string block with 2 lines"
+    },
+    "OBLCD Println Template": {
+        "prefix": "oblcd-println",
+        "body": [
+            "               ;01234567890123456789",
+            "OBLCD_Text     \"${1:Line1}\""
+        ]
+    },
+    "OBLCD Print Screen Template": {
+        "prefix": "oblcd-print-screen",
+        "body": [
+            "OBLCD_Cls",
+            "               ;01234567890123456789",
+            "OBLCD_Text     \"${1:Line1}\"",
+            "OBLCD_Text     \"${2:Line2}\""
         ]
     }
 }
