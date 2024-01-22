@@ -228,5 +228,80 @@
             "OBLCD_Text     \"${1:Line1}\"",
             "OBLCD_Text     \"${2:Line2}\""
         ]
+    },
+    "Addition Template (int)": {
+        "prefix": "add int",
+        "body": [
+            ";region ${1:variable} = ${2:variable} + ${3:variable}",
+            "   LoadX          ${2:variable}",
+            "   LoadY          ${3:variable}",
+            "   ADD",
+            "   Store          ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} + ${3:variable}"
+        ]
+    },
+    "Addition Templat (float)": {
+        "prefix": "add float",
+        "body": [
+            ";region ${1:variable} = ${2:variable} + ${3:variable} (float)",
+            "   fLoadW         ${2:variable}",
+            "   fLoadQ         ${3:variable}",
+            "   fAdd",
+            "   fStore         ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} + ${3:variable} (float)"
+        ]
+    },
+    "Subtraction Template (int)": {
+        "prefix": "subtract int",
+        "body": [
+            ";region ${1:variable} = ${2:variable} - ${3:variable}",
+            "   LoadY          ${2:variable}",
+            "   LoadX          ${3:variable}",
+            "   SUB",
+            "   Store          ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} - ${3:variable}"
+        ]
+    },
+    "Subtraction Template (float)": {
+        "prefix": "subtract float",
+        "body": [
+            ";region ${1:variable} = ${2:variable} - ${3:variable} (float)",
+            "   fLoadQ         ${2:variable}",
+            "   fLoadW         ${3:variable}",
+            "   fSub",
+            "   fStore         ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} - ${3:variable} (float)"
+        ]
+    },
+    "Assignment Operator (int)": {
+        "prefix": "assign int",
+        "body": [
+            ";region ${1:variable} = ${2:value}",
+            "   SetMem       ${1:variable},${2:value}",
+            ";endregion ${1:variable} = ${2:variable}"
+        ]
+    },
+    "Division Operator (float)": {
+        "prefix": "divide float",
+        "body": [
+            ";region ${1:variable} = ${2:variable} / ${3:variable} (float)",
+            "   fLoadQ         ${2:variable}",
+            "   fLoadW         ${3:variable}",
+            "   fDiv",
+            "; Add BranchR for error checking",
+            "   fStore         ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} / ${3:variable} (float)"
+        ]
+    },
+    "Multiplication Operator (float)": {
+        "prefix": "multiply float",
+        "body": [
+            ";region ${1:variable} = ${2:variable} * ${3:variable} (float)",
+            "   fLoadQ         ${2:variable}",
+            "   fLoadW         ${3:variable}",
+            "   fMul",
+            "   fStore         ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} * ${3:variable} (float)"
+        ]
     }
 }
