@@ -53,7 +53,7 @@
         "body": [
             ";region If ${1:variable} > ${2:threshold}",
             "   Recall          ${1:variable}",
-            "   GoIfXGT        ${2:threshold}, ${3:label}",
+            "   GoIfXGT        ${2:threshold},${3:label}",
             ";endregion ${1:variable} > ${2:threshold}"
         ]
     },
@@ -72,7 +72,7 @@
         "body": [
             ";region If ${1:variable} < ${2:threshold}",
             "   Recall          ${1:variable}",
-            "   GoIfXLT        ${2:threshold}, ${3:label}",
+            "   GoIfXLT        ${2:threshold},${3:label}",
             ";endregion ${1:variable} < ${2:threshold}"
         ]
     },
@@ -91,7 +91,7 @@
         "body": [
             ";region If ${1:variable} >= ${2:threshold}",
             "   Recall          ${1:variable}",
-            "   GoIfXGE        ${2:threshold}, ${3:label}",
+            "   GoIfXGE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} >= ${2:threshold}"
         ]
     },
@@ -110,7 +110,7 @@
         "body": [
             ";region If ${1:variable} <= ${2:threshold}",
             "   Recall          ${1:variable}",
-            "   GoIfXLE        ${2:threshold}, ${3:label}",
+            "   GoIfXLE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} <= ${2:threshold}"
         ]
     },
@@ -120,7 +120,7 @@
             ";region If ${1:variable} <= ${2:threshold} (float)",
             "   fRecallW         ${1:variable}",
             "   fRecallQ         ${2:threshold}",
-            "   fGoIfWLEQ      ${3:label}",
+            "   fGoIfWLEQ        ${3:label}",
             ";endregion ${1:variable} <= ${2:threshold} (float)"
         ]
     },
@@ -142,11 +142,11 @@
         "body": [
             ";region ${1:loopName}",
             ";for x=0 < ${2:end}",
-            "   Recall          0",
+            "   LoadX          0",
             "_${1:loopName}",
             "   ${4:code}",
             "   IncX           ;Increment x",
-            "   GoIfXLT        ${2:end}, _${1:loopName}",
+            "   GoIfXLT        ${2:end},_${1:loopName}",
             ";endregion ${1:loopName}"
         ]
     },
@@ -158,7 +158,7 @@
             "_${1:loopName}",
             "   YieldTask ;Required in while loops",
             "   ${3:code}",
-            "   GoIfST         ${2:sentinel}, _${1:loopName}",
+            "   GoIfST         ${2:sentinel},_${1:loopName}",
             "   GoTo           ${4:exit}",
             ";endregion ${1:loopName}"
         ]
@@ -172,7 +172,7 @@
             "   YieldTask ;Required in while loops",
             "   ${3:code}",
             "_${1:loopName}",
-            "   GoIfST         ${2:sentinel}, _${1:loopName}_body",
+            "   GoIfST         ${2:sentinel} _${1:loopName}_body",
             "   GoTo           ${4:exit}",
             ";endregion ${1:loopName}"            
         ]
