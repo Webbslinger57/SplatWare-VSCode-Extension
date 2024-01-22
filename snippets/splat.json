@@ -345,5 +345,15 @@
             "   fStore         ${1:variable}",
             ";endregion ${1:variable}-- (float)"
         ]
+    },
+    "Cast Float to Int Template": {
+        "prefix": "cast float to int",
+        "body": [
+            ";region ${1:variable} = ${2:variable} (float)",
+            "   fRecallW         ${2:variable}",
+            "   fix",
+            "   Store            ${1:variable}",
+            ";endregion ${1:variable} = ${2:variable} (float)"
+        ]
     }
 }
