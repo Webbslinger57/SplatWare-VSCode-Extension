@@ -355,5 +355,14 @@
             "   Store            ${1:variable}",
             ";endregion ${1:variable} = ${2:variable} (float)"
         ]
+    },
+    "Blink Template": {
+        "prefix": "blink",
+        "body": [
+            ";region Blink ${1:output}",
+            "   BlinkMask      %${2:pattern}",
+            "   Blink          ${1:output}",
+            ";endregion Blink ${1:output}"
+        ]
     }
 }
