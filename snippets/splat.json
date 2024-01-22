@@ -52,7 +52,7 @@
         "prefix": "if x > y",
         "body": [
             ";region If ${1:variable} > ${2:threshold}",
-            "   LoadX          ${1:variable}",
+            "   Recall          ${1:variable}",
             "   GoIfXGT        ${2:threshold}, ${3:label}",
             ";endregion ${1:variable} > ${2:threshold}"
         ]
@@ -61,8 +61,8 @@
         "prefix": "if x > y (float)",
         "body": [
             ";region If ${1:variable} > ${2:threshold} (float)",
-            "   fLoadW         ${1:variable}",
-            "   fLoadQ         ${2:threshold}",
+            "   fRecallW         ${1:variable}",
+            "   fRecallQ         ${2:threshold}",
             "   fGoIfWGTQ      ${3:label}",
             ";endregion ${1:variable} > ${2:threshold} (float)"
         ]
@@ -71,7 +71,7 @@
         "prefix": "if x < y",
         "body": [
             ";region If ${1:variable} < ${2:threshold}",
-            "   LoadX          ${1:variable}",
+            "   Recall          ${1:variable}",
             "   GoIfXLT        ${2:threshold}, ${3:label}",
             ";endregion ${1:variable} < ${2:threshold}"
         ]
@@ -80,8 +80,8 @@
         "prefix": "if x < y (float)",
         "body": [
             ";region If ${1:variable} < ${2:threshold} (float)",
-            "   fLoadW         ${1:variable}",
-            "   fLoadQ         ${2:threshold}",
+            "   fRecallW         ${1:variable}",
+            "   fRecallQ         ${2:threshold}",
             "   fGoIfWLTQ      ${3:label}",
             ";endregion ${1:variable} < ${2:threshold} (float)"
         ]
@@ -90,7 +90,7 @@
         "prefix": "if x >= y",
         "body": [
             ";region If ${1:variable} >= ${2:threshold}",
-            "   LoadX          ${1:variable}",
+            "   Recall          ${1:variable}",
             "   GoIfXGE        ${2:threshold}, ${3:label}",
             ";endregion ${1:variable} >= ${2:threshold}"
         ]
@@ -99,8 +99,8 @@
         "prefix": "if x >= y (float)",
         "body": [
             ";region If ${1:variable} >= ${2:threshold} (float)",
-            "   fLoadW         ${1:variable}",
-            "   fLoadQ         ${2:threshold}",
+            "   fRecallW         ${1:variable}",
+            "   fRecallQ         ${2:threshold}",
             "   fGoIfWGEQ      ${3:label}",
             ";endregion ${1:variable} >= ${2:threshold} (float)"
         ]
@@ -109,7 +109,7 @@
         "prefix": "if x <= y",
         "body": [
             ";region If ${1:variable} <= ${2:threshold}",
-            "   LoadX          ${1:variable}",
+            "   Recall          ${1:variable}",
             "   GoIfXLE        ${2:threshold}, ${3:label}",
             ";endregion ${1:variable} <= ${2:threshold}"
         ]
@@ -118,8 +118,8 @@
         "prefix": "if x <= y (float)",
         "body": [
             ";region If ${1:variable} <= ${2:threshold} (float)",
-            "   fLoadW         ${1:variable}",
-            "   fLoadQ         ${2:threshold}",
+            "   fRecallW         ${1:variable}",
+            "   fRecallQ         ${2:threshold}",
             "   fGoIfWLEQ      ${3:label}",
             ";endregion ${1:variable} <= ${2:threshold} (float)"
         ]
@@ -142,7 +142,7 @@
         "body": [
             ";region ${1:loopName}",
             ";for x=0 < ${2:end}",
-            "   LoadX          0",
+            "   Recall          0",
             "_${1:loopName}",
             "   ${4:code}",
             "   IncX           ;Increment x",
@@ -233,8 +233,9 @@
         "prefix": "add int",
         "body": [
             ";region ${1:variable} = ${2:variable} + ${3:variable}",
-            "   LoadX          ${2:variable}",
-            "   LoadY          ${3:variable}",
+            "   Recall          ${2:variable}",
+            "   Push ; X to Y",
+            "   Recall          ${3:variable}",
             "   ADD",
             "   Store          ${1:variable}",
             ";endregion ${1:variable} = ${2:variable} + ${3:variable}"
@@ -244,8 +245,8 @@
         "prefix": "add float",
         "body": [
             ";region ${1:variable} = ${2:variable} + ${3:variable} (float)",
-            "   fLoadW         ${2:variable}",
-            "   fLoadQ         ${3:variable}",
+            "   fRecallW         ${2:variable}",
+            "   fRecallQ         ${3:variable}",
             "   fAdd",
             "   fStore         ${1:variable}",
             ";endregion ${1:variable} = ${2:variable} + ${3:variable} (float)"
@@ -255,8 +256,9 @@
         "prefix": "subtract int",
         "body": [
             ";region ${1:variable} = ${2:variable} - ${3:variable}",
-            "   LoadY          ${2:variable}",
-            "   LoadX          ${3:variable}",
+            "   Recall          ${2:variable}",
+            "   Push ; X to Y",
+            "   Recall          ${3:variable}",
             "   SUB",
             "   Store          ${1:variable}",
             ";endregion ${1:variable} = ${2:variable} - ${3:variable}"
@@ -266,8 +268,8 @@
         "prefix": "subtract float",
         "body": [
             ";region ${1:variable} = ${2:variable} - ${3:variable} (float)",
-            "   fLoadQ         ${2:variable}",
-            "   fLoadW         ${3:variable}",
+            "   fRecallQ         ${2:variable}",
+            "   fRecallW         ${3:variable}",
             "   fSub",
             "   fStore         ${1:variable}",
             ";endregion ${1:variable} = ${2:variable} - ${3:variable} (float)"
@@ -285,8 +287,8 @@
         "prefix": "divide float",
         "body": [
             ";region ${1:variable} = ${2:variable} / ${3:variable} (float)",
-            "   fLoadQ         ${2:variable}",
-            "   fLoadW         ${3:variable}",
+            "   fRecallQ         ${2:variable}",
+            "   fRecallW         ${3:variable}",
             "   fDiv",
             "; Add BranchR for error checking",
             "   fStore         ${1:variable}",
@@ -297,11 +299,51 @@
         "prefix": "multiply float",
         "body": [
             ";region ${1:variable} = ${2:variable} * ${3:variable} (float)",
-            "   fLoadQ         ${2:variable}",
-            "   fLoadW         ${3:variable}",
+            "   fRecallQ         ${2:variable}",
+            "   fRecallW         ${3:variable}",
             "   fMul",
             "   fStore         ${1:variable}",
             ";endregion ${1:variable} = ${2:variable} * ${3:variable} (float)"
+        ]
+    },
+    "Increment Operator": {
+        "prefix": "++",
+        "body": [
+            ";region ${1:variable}++",
+            "   Recall          ${1:variable}",
+            "   IncX",
+            "   Store          ${1:variable}",
+            ";endregion ${1:variable}++"
+        ]
+    },
+    "Increment Opertor (float)": {
+        "prefix": "++ (float)",
+        "body": [
+            ";region ${1:variable}++ (float)",
+            "   fRecallW         ${1:variable}",
+            "   fInc",
+            "   fStore         ${1:variable}",
+            ";endregion ${1:variable}++ (float)"
+        ]
+    },
+    "Decrement Operator": {
+        "prefix": "--",
+        "body": [
+            ";region ${1:variable}--",
+            "   Recall          ${1:variable}",
+            "   DecX",
+            "   Store          ${1:variable}",
+            ";endregion ${1:variable}--"
+        ]
+    },
+    "Decrement Operator (float)": {
+        "prefix": "-- (float)",
+        "body": [
+            ";region ${1:variable}-- (float)",
+            "   fRecallW         ${1:variable}",
+            "   fDec",
+            "   fStore         ${1:variable}",
+            ";endregion ${1:variable}-- (float)"
         ]
     }
 }
