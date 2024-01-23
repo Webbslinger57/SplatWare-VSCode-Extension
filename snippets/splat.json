@@ -128,12 +128,14 @@
         "prefix": "for reverse",
         "body": [
             ";region ${1:loopName}",
-            ";for i=${2:start} > 0",
-            "   LoadI          ${2:start}",
+            ";for x=${2:start} > 0",
+            "   SetMem         ${3:ControlVariable},${2:start}",
             "_${1:loopName}",
             "   ${4:code}",
-            "   DecI           ;Decrement i",
-            "   GoIfnz         _${1:loopName}",
+            "   Recall         ${3:ControlVariable}",
+            "   DecX           ;Increment x",
+            "   Store          ${3:ControlVariable}",
+            "   GoIfMGT        ${3:ControlVariable},${2:end},_${1:loopName}",
             ";endregion ${1:loopName}"
         ]
     },
@@ -142,11 +144,13 @@
         "body": [
             ";region ${1:loopName}",
             ";for x=0 < ${2:end}",
-            "   LoadX          0",
+            "   SetMem         ${3:ControlVariable},0",
             "_${1:loopName}",
             "   ${4:code}",
+            "   Recall         ${3:ControlVariable}",
             "   IncX           ;Increment x",
-            "   GoIfXLT        ${2:end},_${1:loopName}",
+            "   Store          ${3:ControlVariable}",
+            "   GoIfMLT        ${3:ControlVariable},${2:end},_${1:loopName}",
             ";endregion ${1:loopName}"
         ]
     },
