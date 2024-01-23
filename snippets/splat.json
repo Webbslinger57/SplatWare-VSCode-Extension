@@ -38,7 +38,7 @@
             ";endregion ${1:functionName}"
         ]
     },
-    "Switch Statement  Template": {
+    "Switch Statement Template": {
         "prefix": "switch",
         "body": [
             "   BranchM        ${1:variable}",
@@ -51,8 +51,8 @@
     "If Greater Template": {
         "prefix": "if x > y",
         "body": [
-            ";region If ${1:variable} > ${2:threshold}",
-            "   Recall          ${1:variable}",
+            ";region If ${1:variable}(mem) > ${2:threshold}(const)",
+            "   Recall         ${1:variable}",
             "   GoIfXGT        ${2:threshold},${3:label}",
             ";endregion ${1:variable} > ${2:threshold}"
         ]
@@ -60,9 +60,9 @@
     "If Greater Template (float)": {
         "prefix": "if x > y (float)",
         "body": [
-            ";region If ${1:variable} > ${2:threshold} (float)",
-            "   fRecallW         ${1:variable}",
-            "   fRecallQ         ${2:threshold}",
+            ";region If ${1:variable}(mem) > ${2:threshold}(mem) (float)",
+            "   fRecallW       ${1:variable}",
+            "   fRecallQ       ${2:threshold}",
             "   fGoIfWGTQ      ${3:label}",
             ";endregion ${1:variable} > ${2:threshold} (float)"
         ]
@@ -70,8 +70,8 @@
     "If Less Template": {
         "prefix": "if x < y",
         "body": [
-            ";region If ${1:variable} < ${2:threshold}",
-            "   Recall          ${1:variable}",
+            ";region If ${1:variable}(mem) < ${2:threshold}(const)",
+            "   Recall         ${1:variable}",
             "   GoIfXLT        ${2:threshold},${3:label}",
             ";endregion ${1:variable} < ${2:threshold}"
         ]
@@ -79,9 +79,9 @@
     "If Less Template (float)": {
         "prefix": "if x < y (float)",
         "body": [
-            ";region If ${1:variable} < ${2:threshold} (float)",
-            "   fRecallW         ${1:variable}",
-            "   fRecallQ         ${2:threshold}",
+            ";region If ${1:variable}(mem) < ${2:threshold}(mem) (float)",
+            "   fRecallW       ${1:variable}",
+            "   fRecallQ       ${2:threshold}",
             "   fGoIfWLTQ      ${3:label}",
             ";endregion ${1:variable} < ${2:threshold} (float)"
         ]
@@ -89,8 +89,8 @@
     "If Greater or Equal Template": {
         "prefix": "if x >= y",
         "body": [
-            ";region If ${1:variable} >= ${2:threshold}",
-            "   Recall          ${1:variable}",
+            ";region If ${1:variable}(mem) >= ${2:threshold}(const)",
+            "   Recall         ${1:variable}",
             "   GoIfXGE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} >= ${2:threshold}"
         ]
@@ -98,9 +98,9 @@
     "If Greater or Equal Template (float)": {
         "prefix": "if x >= y (float)",
         "body": [
-            ";region If ${1:variable} >= ${2:threshold} (float)",
-            "   fRecallW         ${1:variable}",
-            "   fRecallQ         ${2:threshold}",
+            ";region If ${1:variable}(mem) >= ${2:threshold}(mem) (float)",
+            "   fRecallW       ${1:variable}",
+            "   fRecallQ       ${2:threshold}",
             "   fGoIfWGEQ      ${3:label}",
             ";endregion ${1:variable} >= ${2:threshold} (float)"
         ]
@@ -108,8 +108,8 @@
     "If Less or Equal Template": {
         "prefix": "if x <= y",
         "body": [
-            ";region If ${1:variable} <= ${2:threshold}",
-            "   Recall          ${1:variable}",
+            ";region If ${1:variable}(mem) <= ${2:threshold}(const)",
+            "   Recall         ${1:variable}",
             "   GoIfXLE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} <= ${2:threshold}"
         ]
@@ -117,7 +117,7 @@
     "If Less or Equal Template (float)": {
         "prefix": "if x <= y (float)",
         "body": [
-            ";region If ${1:variable} <= ${2:threshold} (float)",
+            ";region If ${1:variable}(mem) <= ${2:threshold}(mem) (float)",
             "   fRecallW         ${1:variable}",
             "   fRecallQ         ${2:threshold}",
             "   fGoIfWLEQ        ${3:label}",
@@ -128,14 +128,17 @@
         "prefix": "for reverse",
         "body": [
             ";region ${1:loopName}",
-            ";for x=${2:start} > 0",
-            "   SetMem         ${3:ControlVariable},${2:start}",
-            "_${1:loopName}",
-            "   ${4:code}",
-            "   Recall         ${3:ControlVariable}",
-            "   DecX           ;Increment x",
-            "   Store          ${3:ControlVariable}",
-            "   GoIfMGT        ${3:ControlVariable},${2:end},_${1:loopName}",
+            ";for x=${2:start} >= ${3:end} reverse",
+            "_${1:loopName}Start",
+            "   SetMem         ${4:ControlVariable},${2:start}",
+            "${1:loopName}Body",
+            "   Recall         ${4:ControlVariable}",
+            "   GoIfMLT        ${4:ControlVariable},${3:end},${1:loopName}Exit",
+            "   DecX           ;${4:ControlVariable}--",
+            "   Store          ${4:ControlVariable}",
+            "   ${5:code}",
+            "   GoTo           ${1:loopName}Body",
+            "${1:loopName}Exit",
             ";endregion ${1:loopName}"
         ]
     },
@@ -143,14 +146,18 @@
         "prefix": "for loop",
         "body": [
             ";region ${1:loopName}",
-            ";for x=0 < ${2:end}",
-            "   SetMem         ${3:ControlVariable},0",
-            "_${1:loopName}",
-            "   ${4:code}",
-            "   Recall         ${3:ControlVariable}",
-            "   IncX           ;Increment x",
-            "   Store          ${3:ControlVariable}",
-            "   GoIfMLT        ${3:ControlVariable},${2:end},_${1:loopName}",
+            ";for x=${2:start} <= ${3:end}",
+            "_${1:loopName}Start",
+            "   SetMem         ${4:ControlVariable},${2:start}",
+            "${1:loopName}Body",
+            "   Recall         ${4:ControlVariable}",
+            "   GoIfMGT        ${4:ControlVariable},${3:end},${1:loopName}Exit",
+            "   DecX           ;${4:ControlVariable}--",
+            "   Store          ${4:ControlVariable}",
+            "; Your Loop Code",
+            "   ${5:code}",
+            "   GoTo           ${1:loopName}Body",
+            "${1:loopName}Exit",
             ";endregion ${1:loopName}"
         ]
     },
