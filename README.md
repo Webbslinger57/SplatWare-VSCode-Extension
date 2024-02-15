@@ -1,6 +1,6 @@
-# splat-language-support
+# SplatWare VSCode Extension
 
-This will be a fully built out language support extension one day...maybe, but for now it is simply syntax highlighting for the Splat PC Programming language.
+This Extension offers Syntax Highlighting as well a decent collection of code snippets to make your workflow as efficient as possible :)
 
 ## Features
 
