@@ -76,6 +76,24 @@
             ";endregion ${1:variable} < ${2:threshold}"
         ]
     },
+    "If Not Equal Template": {
+        "prefix": "if x != y",
+        "body": [
+            ";region If ${1:variable}(mem) != ${2:threshold}(const)",
+            "   Recall         ${1:variable}",
+            "   GoIfXNE        ${2:threshold},${3:label}",
+            ";endregion ${1:variable} != ${2:threshold}"
+        ]
+    },
+    "If Equal Template": {
+        "prefix": "if x == y",
+        "body": [
+            ";region If ${1:variable}(mem) == ${2:threshold}(const)",
+            "   Recall         ${1:variable}",
+            "   GoIfXEQ        ${2:threshold},${3:label}",
+            ";endregion ${1:variable} == ${2:threshold}"
+        ]
+    },
     "If Less Template (float)": {
         "prefix": "if x < y (float)",
         "body": [
