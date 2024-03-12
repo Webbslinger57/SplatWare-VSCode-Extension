@@ -390,5 +390,29 @@
             "   Blink          ${1:output}",
             ";endregion Blink ${1:output}"
         ]
+    },
+    "Debug Log": {
+        "prefix": "debug log",
+        "body": [
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"${1:Debug Message}\",13,10"
+        ]
+    },
+    "Debug Log (float)": {
+        "prefix": "debug log float",
+        "body": [
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"${1:Debug Message}: \"",
+            ";<=IF DEBUG>   fRecallW       ${2:variable}",
+            ";<=IF DEBUG>   iifPrintWVW    COMTTL,5,2",
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"\",13,10"
+        ]
+    },
+    "Debug Log (int)": {
+        "prefix": "debug log int",
+        "body": [
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"${1:Debug Message}: \"",
+            ";<=IF DEBUG>   Recall         ${2:variable}",
+            ";<=IF DEBUG>   iiuPrintXVW    COMTTL",
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"\",13,10"
+        ]
     }
 }
