@@ -7,18 +7,10 @@ This Extension offers Syntax Highlighting as well a decent collection of code sn
 This Package adds syntax highlighting for many of the common Splat PC Instructions
 It also adds collapsable regions by using ";region" and ";endregion"
 
-## Requirements
-
-No current requirements
-
-## Known Issues
-
-Many Instructions are not yet supported.
-
 ## Release Notes
 
-In this release, we added collapsable regions
+Added Code Snippets
 
-### 1.0.0
+### 1.1.0
 
-Initial release of Splat PC Language Support
+This is the first release since the extension has been tested in a project. With each project I use the extension on, there will be an updated release adding the syntax and snippets that I discover to be useful
