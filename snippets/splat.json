@@ -12,9 +12,9 @@
             "; <-  ${4:Return values}",
             ";===============================================================================",
             "${1:subroutineName}:",
-            "   ${5:code}",
+            "    ${5:code}",
             "",
-            "   Return",
+            "    Return",
             ";endregion ${1:subroutineName}"
         ],
         "description": "Template for a subroutine"
@@ -32,28 +32,28 @@
             "; <-  ${4:Return values}",
             ";===============================================================================",
             "${1:functionName}",
-            "   ${5:code}",
+            "    ${5:code}",
             "",
-            "   GoTo          ${6:exit}",
+            "    GoTo          ${6:exit}",
             ";endregion ${1:functionName}"
         ]
     },
     "Switch Statement Template": {
         "prefix": "switch",
         "body": [
-            "   BranchM        ${1:variable}",
-            "     Target       ${2:case1}",
-            "     Target       ${3:case2}",
-            "     Target       ${4:case3}",
-            "     Target       ${5:case4}"
+            "    BranchM        ${1:variable}",
+            "        Target     ${2:case1}",
+            "        Target     ${3:case2}",
+            "        Target     ${4:case3}",
+            "        Target     ${5:case4}"
         ]
     },
     "If Greater Template": {
         "prefix": "if x > y",
         "body": [
             ";region If ${1:variable}(mem) > ${2:threshold}(const)",
-            "   Recall         ${1:variable}",
-            "   GoIfXGT        ${2:threshold},${3:label}",
+            "    Recall         ${1:variable}",
+            "    GoIfXGT        ${2:threshold},${3:label}",
             ";endregion ${1:variable} > ${2:threshold}"
         ]
     },
@@ -71,8 +71,8 @@
         "prefix": "if x < y",
         "body": [
             ";region If ${1:variable}(mem) < ${2:threshold}(const)",
-            "   Recall         ${1:variable}",
-            "   GoIfXLT        ${2:threshold},${3:label}",
+            "    Recall         ${1:variable}",
+            "    GoIfXLT        ${2:threshold},${3:label}",
             ";endregion ${1:variable} < ${2:threshold}"
         ]
     },
@@ -80,8 +80,8 @@
         "prefix": "if x != y",
         "body": [
             ";region If ${1:variable}(mem) != ${2:threshold}(const)",
-            "   Recall         ${1:variable}",
-            "   GoIfXNE        ${2:threshold},${3:label}",
+            "    Recall         ${1:variable}",
+            "    GoIfXNE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} != ${2:threshold}"
         ]
     },
@@ -89,8 +89,8 @@
         "prefix": "if x == y",
         "body": [
             ";region If ${1:variable}(mem) == ${2:threshold}(const)",
-            "   Recall         ${1:variable}",
-            "   GoIfXEQ        ${2:threshold},${3:label}",
+            "    Recall         ${1:variable}",
+            "    GoIfXEQ        ${2:threshold},${3:label}",
             ";endregion ${1:variable} == ${2:threshold}"
         ]
     },
@@ -98,9 +98,9 @@
         "prefix": "if x < y (float)",
         "body": [
             ";region If ${1:variable}(mem) < ${2:threshold}(mem) (float)",
-            "   fRecallW       ${1:variable}",
-            "   fRecallQ       ${2:threshold}",
-            "   fGoIfWLTQ      ${3:label}",
+            "    fRecallW       ${1:variable}",
+            "    fRecallQ       ${2:threshold}",
+            "    fGoIfWLTQ      ${3:label}",
             ";endregion ${1:variable} < ${2:threshold} (float)"
         ]
     },
@@ -108,8 +108,8 @@
         "prefix": "if x >= y",
         "body": [
             ";region If ${1:variable}(mem) >= ${2:threshold}(const)",
-            "   Recall         ${1:variable}",
-            "   GoIfXGE        ${2:threshold},${3:label}",
+            "    Recall         ${1:variable}",
+            "    GoIfXGE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} >= ${2:threshold}"
         ]
     },
@@ -117,9 +117,9 @@
         "prefix": "if x >= y (float)",
         "body": [
             ";region If ${1:variable}(mem) >= ${2:threshold}(mem) (float)",
-            "   fRecallW       ${1:variable}",
-            "   fRecallQ       ${2:threshold}",
-            "   fGoIfWGEQ      ${3:label}",
+            "    fRecallW       ${1:variable}",
+            "    fRecallQ       ${2:threshold}",
+            "    fGoIfWGEQ      ${3:label}",
             ";endregion ${1:variable} >= ${2:threshold} (float)"
         ]
     },
@@ -127,8 +127,8 @@
         "prefix": "if x <= y",
         "body": [
             ";region If ${1:variable}(mem) <= ${2:threshold}(const)",
-            "   Recall         ${1:variable}",
-            "   GoIfXLE        ${2:threshold},${3:label}",
+            "    Recall         ${1:variable}",
+            "    GoIfXLE        ${2:threshold},${3:label}",
             ";endregion ${1:variable} <= ${2:threshold}"
         ]
     },
@@ -136,9 +136,9 @@
         "prefix": "if x <= y (float)",
         "body": [
             ";region If ${1:variable}(mem) <= ${2:threshold}(mem) (float)",
-            "   fRecallW         ${1:variable}",
-            "   fRecallQ         ${2:threshold}",
-            "   fGoIfWLEQ        ${3:label}",
+            "    fRecallW         ${1:variable}",
+            "    fRecallQ         ${2:threshold}",
+            "    fGoIfWLEQ        ${3:label}",
             ";endregion ${1:variable} <= ${2:threshold} (float)"
         ]
     },
@@ -147,15 +147,16 @@
         "body": [
             ";region ${1:loopName}",
             ";for i=${2:start} <= ${3:end} reverse",
-            "_${1:loopName}Start",
+            "_${1:loopName}_Start",
             "   LoadI          ${2:start}",
-            "${1:loopName}Body",
+            "_${1:loopName}_Body",
             "   ItoX",
-            "   GoIfXLT        ${3:end},${1:loopName}Exit",
-            "   DecI           ;${4:ControlVariable}--",
-            "   ${5:code}",
-            "   GoTo           ${1:loopName}Body",
-            "${1:loopName}Exit",
+            "   GoIfXLT        ${3:end},_${1:loopName}_Exit",
+            "   ${4:code}",
+            "_${1:loopName}_Continue",
+            "   DecI",
+            "   GoTo           _${1:loopName}_Body",
+            "_${1:loopName}_Exit",
             ";endregion ${1:loopName}"
         ]
     },
@@ -164,15 +165,16 @@
         "body": [
             ";region ${1:loopName}",
             ";for i=${2:start} <= ${3:end}",
-            "_${1:loopName}Start",
+            "_${1:loopName}_Start",
             "   LoadI          ${2:start}",
-            "${1:loopName}Body",
+            "_${1:loopName}_Body",
             "   ItoX",
-            "   GoIfXGT        ${3:end},${1:loopName}Exit",
-            "   IncI           ;${4:ControlVariable}--",
-            "   ${5:code}",
-            "   GoTo           ${1:loopName}Body",
-            "${1:loopName}Exit",
+            "   GoIfXGT        ${3:end},_${1:loopName}_Exit",
+            "   ${4:code}",
+            "_${1:loopName}_Continue",
+            "   IncI",
+            "   GoTo           _${1:loopName}_Body",
+            "_${1:loopName}_Exit",
             ";endregion ${1:loopName}"
         ]
     },
@@ -182,10 +184,10 @@
             ";region ${1:loopName}",
             ";do while not ${2:sentinel}",
             "_${1:loopName}",
-            "   YieldTask ;Required in while loops",
-            "   ${3:code}",
-            "   GoIfST         ${2:sentinel},_${1:loopName}",
-            "   GoTo           ${4:exit}",
+            "    YieldTask      ;Required in while loops",
+            "    ${3:code}",
+            "    GoIfST         ${2:sentinel},_${1:loopName}",
+            "    GoTo           ${4:exit}",
             ";endregion ${1:loopName}"
         ]
     },
@@ -194,12 +196,11 @@
         "body": [
             ";region ${1:loopName}",
             ";while not ${2:sentinel}",
-            "_${1:loopName}_body",
-            "   YieldTask ;Required in while loops",
-            "   ${3:code}",
             "_${1:loopName}",
-            "   GoIfST         ${2:sentinel} _${1:loopName}_body",
-            "   GoTo           ${4:exit}",
+            "    YieldTask ;Required in while loops",
+            "    GoIfSF         ${2:sentinel} _${1:loopName}_Exit",
+            "   ${3:code}",
+            "_${1:loopName}_Exit",
             ";endregion ${1:loopName}"            
         ]
     },
@@ -394,13 +395,13 @@
     "Debug Log": {
         "prefix": "debug log",
         "body": [
-            ";<=IF DEBUG>   iiPrintText    COMTTL,\"${1:Debug Message}\",13,10"
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"[DEBUG]${1:Debug Message}\",13,10"
         ]
     },
     "Debug Log (float)": {
         "prefix": "debug log float",
         "body": [
-            ";<=IF DEBUG>   iiPrintText    COMTTL,\"${1:Debug Message}: \"",
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"[DEBUG]${1:Debug Message}: \"",
             ";<=IF DEBUG>   fRecallW       ${2:variable}",
             ";<=IF DEBUG>   iifPrintWVW    COMTTL,5,2",
             ";<=IF DEBUG>   iiPrintText    COMTTL,\"\",13,10"
@@ -409,10 +410,16 @@
     "Debug Log (int)": {
         "prefix": "debug log int",
         "body": [
-            ";<=IF DEBUG>   iiPrintText    COMTTL,\"${1:Debug Message}: \"",
+            ";<=IF DEBUG>   iiPrintText    COMTTL,\"[DEBUG]${1:Debug Message}: \"",
             ";<=IF DEBUG>   Recall         ${2:variable}",
             ";<=IF DEBUG>   iiuPrintXVW    COMTTL",
             ";<=IF DEBUG>   iiPrintText    COMTTL,\"\",13,10"
+        ]
+    },
+    "Print" : {
+        "prefix": "print",
+        "body": [
+            "    iiPrintText    COMTTL,\"${1:Message}\",13,10"
         ]
     }
 }
