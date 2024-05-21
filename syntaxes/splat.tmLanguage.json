@@ -20,9 +20,9 @@
 		{
 			"include": "#strings"
 		},
-        {
-            "include": "#comments"
-        },
+      {
+           "include": "#comments"
+      },
 		{
 			"include": "#types"
 		},
@@ -89,10 +89,17 @@
 				}
 			]
 		},
-        "comments": {
-            "name": "comment.line.splat",
-            "match": ";.*"
-        },
+		"comments": {
+		"name": "comment.line.splat",
+		"begin": ";",
+		"end": "$",
+		"patterns": [
+				{
+					"name": "keyword.function.splat",
+					"match": "(?i)(\\bTODO:)"
+				}
+		]
+	  },
 		"types": {
 			"name": "entity.name.type.splat",
 			"match": "\\b(NV\\w*)\\b"
